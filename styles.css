@@ -12,3 +12,36 @@
     background-position: center;
 }
 
+.navbar {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top: 5%;
+}
+
+.logo {
+    width: 120px;
+    cursor: pointer;
+}
+
+
+.content{
+    width: 100%;
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #fff;
+}
+
+.content h1{
+    font-size: 50px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+.content ol{
+    margin-top: 5px;
+    margin-bottom: 20px;
+
+}
