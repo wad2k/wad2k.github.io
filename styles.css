@@ -16,3 +16,13 @@ body {
     height: 100vh; /* Ensures the background covers the full viewport height */
     margin: 0; /* Resets default margin */
 }
+
+/* Hide all tab panels by default */
+[role="tabpanel"] {
+    display: none;
+}
+
+/* Show only the active tab panel */
+[role="tabpanel"].active {
+    display: block;
+}
