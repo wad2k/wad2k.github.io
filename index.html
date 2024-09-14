@@ -1,36 +1,30 @@
-<html>
-    <head>
-        <title>Jawad's website</title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
+<link rel="stylesheet" href="https://unpkg.com/xp.css" />
+ <link rel="stylesheet" href="styles.css">
 
-    <body>
-        <div class="banner">
-            <div class="navbar">
-                <img src="logo.png" class="logo">
-            </div>
-            <div class="content">
-                <h1>wad2k</h1>
-                <h2>my languages: </h2>
-                <ol>
-                    <li>java</li>
-                    <li>python</li>
-                    <li>html (learning)</li>
-                    <li>css (learning)</li>
-                </ol>
-                <h2>my projects: </h2>
-                <ol>
-                    <li>carmatch (in progress)</li>
-                    
+<div class="window">
+    <div class="title-bar">
+      <div class="title-bar-text">wad2k</div>
+      <div class="title-bar-controls">
+        <button aria-label="Minimize"></button>
+        <button aria-label="Maximize"></button>
+        <button aria-label="Close"></button>
+      </div>
+    </div>
+    <div class="window-body">
+        <menu role="tablist">
+            <button aria-selected="true" aria-controls="about">about</button>
+            <button aria-controls="music">music</button>
+            <button aria-controls="books">books</button>
+            <button aria-controls="movies">movies</button>
+            <button aria-controls="conract">contact</button>
+        </menu>
+        <article role="tabpanel" id="about">
+            <p> im jawad, a third year computer science student at swansea univeristy.<p>
+            <p>you can find me at: <br>
+            github <br>
+            linkedin <br>
+            </p>
 
-                </ol>
-
-
-            </div>
-
-        </div>
-
-
-    </body>
-
-</html>
+      
+    </div>
+  </div>

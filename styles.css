@@ -1,47 +1,18 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+.large-bold {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.banner{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url(background.jpg);
-    background-size: cover;
-    background-position: center;
+.window {
+    width: 800px;
+    margin: 50px auto;
 }
 
-.navbar {
-    width: 100%;
-    position: absolute;
-    text-align: center;
-    top: 5%;
-}
-
-.logo {
-    width: 120px;
-    cursor: pointer;
-}
-
-
-.content{
-    width: 100%;
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    text-align: center;
-    color: #fff;
-}
-
-.content h1{
-    font-size: 50px;
-    margin-top: 70px;
-    margin-bottom: 20px;
-}
-
-.content ol{
-    margin-top: 5px;
-    margin-bottom: 20px;
-
+body {
+    background-image: url('background.jpg'); /* Replace with your background image path */
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Ensures the background covers the full viewport height */
+    margin: 0; /* Resets default margin */
 }
