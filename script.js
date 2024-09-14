@@ -61,7 +61,7 @@ function displayTopAlbums(data) {
 // Fetch top tracks
 async function fetchTopTracks() {
     try {
-        const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getTopTracks&user=${USERNAME}&api_key=${API_KEY}&period=3month&limit=10&format=json`);
+        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getTopTracks&user=${USERNAME}&api_key=${API_KEY}&period=3month&limit=10&format=json`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
