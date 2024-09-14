@@ -12,8 +12,9 @@ body {
     background-image: url('background.jpg'); /* Replace with your background image path */
     background-size: cover; /* Ensures the image covers the entire area */
     background-position: center; /* Centers the image */
-    background-repeat: repeat; /* Prevents the image from repeating */
-    height: 100vh; /* Ensures the background covers the full viewport height */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: auto; /* Ensures the background covers the full viewport height */
+    min-height: 100vh;
     margin: 0; /* Resets default margin */
 }
 
@@ -27,18 +28,34 @@ body {
     display: block;
 }
 
-.album-grid {
+.album-grid,
+.artist-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Creates a 3-column grid */
     gap: 16px; /* Space between grid items */
     margin: 20px 0; /* Margin above and below the grid */
 }
 
-.album {
-    border: 1px solid #ccc; /* Optional: border around each album */
-    padding: 10px; /* Optional: padding inside album card */
+.album,
+.artist {
+    border: 1px solid #ccc; /* Optional: border around each album/artist */
+    padding: 10px; /* Optional: padding inside album/artist card */
     text-align: center; /* Center text */
     background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
+    border-radius: 8px; /* Optional: rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+}
+
+.track-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    margin: 20px 0; /* Margin above and below the list */
+}
+
+.track-list li {
+    margin-bottom: 10px; /* Space between list items */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
+    padding: 10px; /* Optional: padding inside each item */
     border-radius: 8px; /* Optional: rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
 }
