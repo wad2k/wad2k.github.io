@@ -29,7 +29,7 @@ const API_KEY = "3d69d5290aa0b4c923d5ecc49b1ab22d";
 
 async function fetchTopAlbums() {
     try {
-        const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=${USERNAME}&api_key=${API_KEY}&period=3month&limit=9&format=json`);
+        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getTopAlbums&user=${USERNAME}&api_key=${API_KEY}&format=json&period=3month`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
