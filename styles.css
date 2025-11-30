@@ -9,7 +9,8 @@
 }
 
 body {
-  background-image: url("background.jpg");
+  /* background-image: url("background.jpg"); */
+  background-image: url("bliss.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;  /* ✅ fills screen again */
