@@ -33,34 +33,58 @@ body {
     display: block;
 }
 
-.album-grid,
-.artist-grid {
+/* Grid for albums, still 3 columns like Explorer thumbnails */
+.album-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates a 3-column grid */
-    gap: 16px; /* Space between grid items */
-    margin: 20px 0; /* Margin above and below the grid */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 12px 0;
 }
 
-.album,
-.artist {
-    border: 1px solid #ccc; /* Optional: border around each album/artist */
-    padding: 10px; /* Optional: padding inside album/artist card */
-    text-align: center; /* Center text */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
-    border-radius: 8px; /* Optional: rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+/* Album "icon" style – XP Explorer vibe */
+.album {
+    background: #ece9d8; /* XP beige */
+    border: 2px solid #ffffff;
+    border-right-color: #7a7a7a;
+    border-bottom-color: #7a7a7a;
+    box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #aaaaaa;
+    padding: 6px;
+    text-align: center;
+    font-size: 12px;
 }
 
-.track-list {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0; /* Remove padding */
-    margin: 20px 0; /* Margin above and below the list */
+.album img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border: 2px solid #d4d0c8;
+    border-right-color: #404040;
+    border-bottom-color: #404040;
+    margin-bottom: 4px;
 }
 
-.track-list li {
-    margin-bottom: 10px; /* Space between list items */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: semi-transparent background */
-    padding: 10px; /* Optional: padding inside each item */
-    border-radius: 8px; /* Optional: rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+/* XP-style table for tracks */
+.xp-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.xp-table th,
+.xp-table td {
+    border: 1px solid #9a9a9a;
+    padding: 3px 6px;
+    text-align: left;
+}
+
+.xp-table th {
+    background: linear-gradient(to bottom, #ece9d8, #d4d0c8);
+    font-weight: normal;
+    border-color: #ffffff #7a7a7a #7a7a7a #ffffff;
+}
+
+.xp-table tr:nth-child(even) {
+    background: #f5f4ec;
 }

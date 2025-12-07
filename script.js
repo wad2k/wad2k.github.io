@@ -53,19 +53,26 @@ async function fetchTopAlbums() {
 // Display top albums in the music tab
 function displayTopAlbums(data) {
     const albumGrid = document.querySelector('.album-grid');
-    albumGrid.innerHTML = ''; // Clear previous content
+    albumGrid.innerHTML = '';
 
-    const albums = data.topalbums.album.slice(0, 9); // Limit to top 9 albums
+    const albums = data.topalbums.album.slice(0, 9); // top 9
+
     albums.forEach(album => {
         const albumItem = document.createElement('div');
-        albumItem.classList.add('album'); // Add album class
+        albumItem.classList.add('album');
+
+        const imgUrl = album.image[2]['#text'] || album.image[1]['#text'] || '';
+
         albumItem.innerHTML = `
-            <strong>${album.name}</strong> by ${album.artist.name}<br>
-            <img src="${album.image[2]['#text']}" alt="${album.name} cover" style="width:100%; height: auto;">
+            <img src="${imgUrl}" alt="${album.name} cover">
+            <div><strong>${album.name}</strong></div>
+            <div>${album.artist.name}</div>
         `;
+
         albumGrid.appendChild(albumItem);
     });
 }
+
 
 // Fetch top tracks
 async function fetchTopTracks() {
@@ -84,18 +91,24 @@ async function fetchTopTracks() {
 
 // Display top tracks in the music tab
 function displayTopTracks(data) {
-    const trackList = document.querySelector('.track-list');
-    trackList.innerHTML = ''; // Clear previous content
+    const tbody = document.querySelector('.track-table tbody');
+    tbody.innerHTML = ''; // Clear previous content
 
-    const tracks = data.toptracks.track.slice(0, 10); // Limit to top 10 tracks
-    tracks.forEach(track => {
-        const listItem = document.createElement('li'); // Create list item for each track
-        listItem.innerHTML = `
-            <strong>${track.name}</strong> by ${track.artist.name}<br>
+    const tracks = data.toptracks.track.slice(0, 10); // top 10 tracks
+
+    tracks.forEach((track, index) => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${track.name}</td>
+            <td>${track.artist.name}</td>
         `;
-        trackList.appendChild(listItem); // Append the list item to the track list
+
+        tbody.appendChild(row);
     });
 }
+
 
 // Call the fetch function when the music tab is active
 document.querySelector('[aria-controls="music"]').addEventListener('click', () => {

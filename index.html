@@ -18,7 +18,7 @@
             <button aria-controls="music">music</button>
             <button aria-controls="books">books</button>
             <button aria-controls="movies">movies</button>
-            <button aria-controls="travel">games</button>
+            <button aria-controls="games">games</button>
             <button aria-controls="travel">travel</button>
             <button aria-controls="contact">contact</button>
         </menu>
@@ -34,11 +34,6 @@
             <button class="social-btn" data-url="https://letterboxd.com/wad2k/">letterboxd</button>
             <button class="social-btn" data-url="https://www.goodreads.com/user/show/146960271-jawad">goodreads</button>
             <button class="social-btn" data-url="https://steamcommunity.com/id/wad2k/">steam</button>
-
-            <!-- <button>linkedin</button>
-            <button>letterboxd</button>
-            <button>steam</button>
-            <button>lastfm</button> -->
             </p>
           </article>
 
@@ -49,7 +44,18 @@
             
             <!-- Top Tracks Section -->
             <p>my top tracks from the last 90 days.</p>
-            <ul class="track-list"></ul> <!-- This is where the tracks will be displayed -->
+            <table class="xp-table track-table">
+               <thead>
+                <tr>
+                  <th>#</th>
+                  <th>track</th>
+                  <th>artist</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- JS will inject rows here -->
+              </tbody>
+            </table>
         </article>
 
         <article role="tabpanel" id="books">
