@@ -22,6 +22,15 @@ tabs.forEach(tab => {
     });
 });
 
+document.querySelectorAll('.social-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const url = button.dataset.url;
+    if (!url) return;
+    window.open(url, '_blank'); // always open in new tab
+  });
+});
+
+
 // ---- LAST FM API ----
 
 const USERNAME = "wad2k";
