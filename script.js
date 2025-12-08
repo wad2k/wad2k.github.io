@@ -122,76 +122,70 @@ document.querySelector('[aria-controls="music"]').addEventListener('click', () =
 
 // ---- GOODREADS RSS FEEDS ----
 
+// ---- BOOKS (Open Library + local JSON) ----
+
+// Fetch books.json
 async function fetchBooks() {
-    const proxyUrl = 'https://api.allorigins.win/get?url=';
-    const currentlyReadingUrl = 'https://www.goodreads.com/review/list_rss/146960271?key=S9HAyydJiF2o_T85NAU70PPmysbn0m2v6V1qN3gNDdKYiR0f&shelf=currently-reading';
-    const readUrl = 'https://www.goodreads.com/review/list_rss/146960271?key=S9HAyydJiF2o_T85NAU70PPmysbn0m2v6V1qN3gNDdKYiR0f&shelf=read';
+  try {
+    const response = await fetch("books.json");
+    const books = await response.json();
 
-    try {
-        // Fetch Currently Reading books
-        const currentlyReadingResponse = await fetch(proxyUrl + encodeURIComponent(currentlyReadingUrl));
-        const currentlyReadingData = await currentlyReadingResponse.json();
-        const currentlyReadingDoc = new DOMParser().parseFromString(currentlyReadingData.contents, "text/xml");
-        const currentlyReadingItems = currentlyReadingDoc.querySelectorAll("item");
+    displayBooks(books);
+  } catch (error) {
+    console.error("Error loading books.json:", error);
+  }
+}
 
-        const currentlyReadingBooks = Array.from(currentlyReadingItems).map(item => ({
-            title: item.querySelector("title").textContent,
-            link: item.querySelector("link").textContent,
-        }));
+// Display books in XP tables
+async function displayBooks(books) {
+  const crTable = document.querySelector("#currently-reading-table tbody");
+  const readTable = document.querySelector("#read-table tbody");
 
-        // Log currently reading books
-        console.log('Currently Reading:', currentlyReadingBooks);
+  crTable.innerHTML = "";
+  readTable.innerHTML = "";
 
-        // Fetch Read books
-        const readResponse = await fetch(proxyUrl + encodeURIComponent(readUrl));
-        const readData = await readResponse.json();
-        const readDoc = new DOMParser().parseFromString(readData.contents, "text/xml");
-        const readItems = readDoc.querySelectorAll("item");
+  for (const book of books) {
+    const bookData = await fetchOpenLibrary(book.isbn);
 
-        const readBooks = Array.from(readItems).map(item => ({
-            title: item.querySelector("title").textContent,
-            link: item.querySelector("link").textContent,
-        }));
+    const tr = document.createElement("tr");
 
-        // Log read books
-        console.log('Read Books:', readBooks);
+    tr.innerHTML = `
+      <td><img src="${bookData.cover}" style="width:40px;height:auto;border:1px solid #888;"></td>
+      <td><a href="${bookData.link}" target="_blank">${book.title}</a></td>
+      <td>${book.author}</td>
+    `;
 
-        // Call display function
-        displayBooks(currentlyReadingBooks, readBooks);
-    } catch (error) {
-        console.error('Error fetching RSS feed:', error);
+    if (book.status === "reading") {
+      crTable.appendChild(tr);
+    } else {
+      readTable.appendChild(tr);
     }
+  }
 }
 
-// Function to load books when the page is ready or when the books tab is clicked
-function loadBooks() {
-    fetchBooks(); // Call the fetchBooks function
+// Fetch metadata from Open Library
+async function fetchOpenLibrary(isbn) {
+  try {
+    const res = await fetch(`https://openlibrary.org/isbn/${isbn}.json`);
+    const data = await res.json();
+
+    const cover = `https://covers.openlibrary.org/b/isbn/${isbn}-M.jpg`;
+
+    return {
+      cover,
+      link: `https://openlibrary.org${data.key}`
+    };
+
+  } catch {
+    return {
+      cover: "",
+      link: "#"
+    };
+  }
 }
 
-// Call loadBooks when the page is fully loaded
-window.onload = loadBooks;
-
-// Display the books in the UI
-function displayBooks(currentlyReading, read) {
-    const currentlyReadingContainer = document.getElementById('currently-reading');
-    const readContainer = document.getElementById('read');
-
-    // Clear previous content
-    currentlyReadingContainer.innerHTML = '';
-    readContainer.innerHTML = '';
-
-    // Display Currently Reading
-    currentlyReading.forEach(book => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="${book.link}" target="_blank">${book.title}</a>`;
-        currentlyReadingContainer.appendChild(listItem);
-    });
-
-    // Display Read Books
-    read.forEach(book => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<a href="${book.link}" target="_blank">${book.title}</a>`;
-        readContainer.appendChild(listItem);
-    });
-}
-
+// Load books only when Books tab first shown
+document.querySelector('[aria-controls="books"]').addEventListener("click", () => {
+  const table = document.querySelector("#read-table tbody");
+  if (!table.hasChildNodes()) fetchBooks();
+});

@@ -88,3 +88,28 @@ body {
 .xp-table tr:nth-child(even) {
     background: #f5f4ec;
 }
+
+/* Center the cover column in the books tab */
+#books td:first-child {
+  text-align: center;
+  vertical-align: middle;
+  width: 60px; /* keeps it narrow */
+}
+
+#books img {
+  display: block;
+  margin: 0 auto;
+  image-rendering: pixelated; /* XP-ish */
+  background: #d4d0c8;
+  padding: 2px;
+  border: 1px solid #888;
+}
+
+#books a {
+  color: inherit;           /* same color as normal text */
+  text-decoration: none;    /* remove underline */
+}
+
+#books a:hover {
+  text-decoration: underline; /* subtle hover */
+}

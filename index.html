@@ -38,12 +38,12 @@
           </article>
 
         <article role="tabpanel" id="music">
-            <p>my top albums from the last 90 days.</p>
+            <p>my top albums from the last 90 days:</p>
             <!-- Top Albums Section -->
             <div class="album-grid"></div> <!-- This is where the albums will be displayed -->
             
             <!-- Top Tracks Section -->
-            <p>my top tracks from the last 90 days.</p>
+            <p>my top tracks from the last 90 days:</p>
             <table class="xp-table track-table">
                <thead>
                 <tr>
@@ -59,12 +59,31 @@
         </article>
 
         <article role="tabpanel" id="books">
-          <h2>Currently Reading</h2>
-          <ul id="currently-reading"></ul> <!-- Container for currently reading books -->
-          
-          <h2>Read Books</h2>
-          <ul id="read"></ul> <!-- Container for read books -->
-      </article>
+          <p><strong>currently reading:</strong></p>
+          <table class="xp-table" id="currently-reading-table">
+            <thead>
+              <tr>
+                <th>cover</th>
+                <th>title</th>
+                <th>author</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <p><strong>recently read:</strong></p>
+          <table class="xp-table" id="read-table">
+            <thead>
+              <tr>
+                <th>cover</th>
+                <th>title</th>
+                <th>author</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </article>
+
 
         <article role="tabpanel" id="movies">
             <p>the movies section.</p>

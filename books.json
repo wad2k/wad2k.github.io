@@ -1,0 +1,38 @@
+[
+  {
+    "title": "the housemaid",
+    "author": "freida mcfadden",
+    "status": "reading",
+    "isbn": "9781538742570"
+  },
+  {
+    "title": "body",
+    "author": "asa nonami",
+    "status": "read",
+    "isbn": "9781934287378"
+  },
+  {
+    "title": "fevre dream",
+    "author": "george r. r. martin",
+    "status": "read",
+    "isbn": "1407247298"
+  },
+  {
+    "title": "breakfast at tiffany's",
+    "author": "truman capote",
+    "status": "read",
+    "isbn": "0307456323"
+  },
+  {
+    "title": "if cats disappeared from the world",
+    "author": "genki kawamura",
+    "status": "read",
+    "isbn": "1529005752"
+  },
+  {
+    "title": "white nights",
+    "author": "fyodor dostoevsky",
+    "status": "read",
+    "isbn": "9781676885634"
+  }
+]
